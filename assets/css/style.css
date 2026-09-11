@@ -1,1 +1,216 @@
 
+/* ==================== VARIABLES CSS GLOBALES ==================== */
+
+:root { /* Selector que apunta a la raíz del documento. Aquí se definen variables reutilizables en todo el CSS */
+    --color-principal: #2563eb; /* Variable de color azul para elementos destacados como el encabezado y enlaces */
+    --color-texto: #0f172a; /* Variable de color oscuro para el texto principal, garantiza buen contraste */
+    --color-fondo: #f9fafb; /* Variable de color gris muy claro para el fondo general de la página */
+    --espacio: 1rem; /* Variable de espaciado base (1rem = 16px por defecto). Se usa para paddings, gaps y márgenes */
+    --paso-0: clamp(0.9rem, 0.3vw + 0.85rem, 1rem); /* Tamaño de fuente fluido para texto normal: mínimo 0.9rem, ideal según viewport, máximo 1rem */
+    --paso-1: clamp(1.25rem, 0.8vw + 1rem, 1.5rem); /* Tamaño de fuente fluido para subtítulos: mínimo 1.25rem, ideal según viewport, máximo 1.5rem */
+} /* Fin de las variables globales */
+
+
+/* ==================== ESTILO GENERAL DEL BODY CON CSS GRID ==================== */
+
+body { /* Selector que aplica estilos a todo el cuerpo de la página */
+    display: grid; /* Activa CSS Grid para organizar la macroestructura del sitio en áreas (requisito de la lista de cotejo) */
+    grid-template-areas: "encabezado" "navegacion" "principal" "pie"; /* Define 4 filas verticales: cada área ocupa todo el ancho en móvil (mobile-first) */
+    gap: var(--espacio); /* Espacio de separación entre las áreas del grid, usa la variable definida en :root (1rem) */
+    font-family: Arial, sans-serif; /* Fuente del texto: Arial como principal, sans-serif como respaldo genérico */
+    margin: 0; /* Elimina el margen por defecto del navegador para que el diseño ocupe toda la pantalla */
+    background-color: var(--color-fondo); /* Aplica el color de fondo gris claro definido en la variable */
+    color: var(--color-texto); /* Aplica el color de texto oscuro definido en la variable */
+    font-size: var(--paso-0); /* Aplica el tamaño de fuente fluido definido con clamp() para el texto base */
+} /* Fin del estilo del body */
+
+
+/* ==================== ENCABEZADO ==================== */
+
+.encabezado-sitio { /* Selector de clase para el elemento <header> */
+    grid-area: encabezado; /* Asigna esta área al nombre "encabezado" definido en grid-template-areas del body */
+    text-align: center; /* Centra horizontalmente el texto del encabezado */
+    padding: var(--espacio); /* Agrega espacio interno alrededor del contenido usando la variable (1rem) */
+    background-color: var(--color-principal); /* Aplica el color azul definido en la variable como fondo */
+    color: white; /* Color de texto blanco para contrastar con el fondo azul (accesibilidad: contraste adecuado) */
+} /* Fin del estilo del encabezado */
+
+.encabezado-sitio h1 { /* Selector para el título h1 dentro del encabezado */
+    margin: 0; /* Elimina el margen por defecto del h1 para control total del espaciado */
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem); /* Tamaño fluido para el título: mínimo 1.5rem, escala con viewport, máximo 2.5rem */
+} /* Fin del estilo del h1 */
+
+.subtitulo { /* Selector de clase para el párrafo descriptivo debajo del título */
+    margin: 0.5rem 0 0 0; /* Margen: 0.5rem arriba, 0 derecha, 0 abajo, 0 izquierda. Separa el subtítulo del título */
+    font-size: var(--paso-0); /* Usa el tamaño de fuente fluido definido en la variable para texto normal */
+} /* Fin del estilo del subtítulo */
+
+
+/* ==================== NAVEGACIÓN CON FLEXBOX ==================== */
+
+.navegacion-sitio { /* Selector de clase para el elemento <nav> */
+    grid-area: navegacion; /* Asigna esta área al nombre "navegacion" definido en grid-template-areas del body */
+    display: flex; /* Activa Flexbox para alinear los enlaces en fila horizontal (requisito de la lista de cotejo) */
+    justify-content: center; /* Centra horizontalmente los enlaces dentro de la barra de navegación */
+    flex-wrap: wrap; /* Permite que los enlaces bajen a la siguiente línea si no caben en pantallas pequeñas */
+    gap: var(--espacio); /* Espacio entre cada enlace usando la variable (1rem) */
+    background-color: #e2e8f0; /* Color de fondo gris claro para la barra de navegación */
+    position: sticky; /* Hace que la barra se quede fija en la parte superior al hacer scroll */
+    top: 0; /* Posición fija en el borde superior de la ventana (necesario para que sticky funcione) */
+    padding: var(--espacio); /* Espacio interno alrededor de los enlaces usando la variable */
+    z-index: 100; /* Asegura que la barra de navegación quede por encima de otros elementos al hacer scroll */
+} /* Fin del estilo de la navegación */
+
+.navegacion-sitio a { /* Selector para todos los enlaces <a> dentro de la navegación */
+    text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
+    color: var(--color-principal); /* Aplica el color azul definido en la variable al texto del enlace */
+    font-weight: bold; /* Pone el texto del enlace en negritas para mayor visibilidad */
+    padding: 0.5rem 1rem; /* Agrega espacio interno: 0.5rem arriba/abajo y 1rem izquierda/derecha para área de clic más grande (accesibilidad) */
+    border-radius: 4px; /* Redondea ligeramente las esquinas del área del enlace */
+} /* Fin del estilo de los enlaces de navegación */
+
+.navegacion-sitio a:hover { /* Selector para cuando el usuario pasa el cursor sobre un enlace (estado hover) */
+    background-color: var(--color-principal); /* Cambia el fondo a azul al pasar el cursor */
+    color: white; /* Cambia el texto a blanco al pasar el cursor para mantener contraste */
+} /* Fin del estilo hover de los enlaces */
+
+.navegacion-sitio a:focus { /* Selector para cuando el enlace recibe foco por teclado (accesibilidad: navegación por teclado) */
+    outline: 3px solid var(--color-principal); /* Muestra un borde visible de 3px azul alrededor del enlace enfocado */
+    outline-offset: 2px; /* Separa el borde del foco 2px del elemento para que sea más visible */
+} /* Fin del estilo focus de los enlaces */
+
+
+/* ==================== CONTENIDO PRINCIPAL ==================== */
+
+.contenido-principal { /* Selector de clase para el elemento <main> */
+    grid-area: principal; /* Asigna esta área al nombre "principal" definido en grid-template-areas del body */
+    padding: var(--espacio); /* Agrega espacio interno alrededor del contenido principal */
+    max-width: 1200px; /* Ancho máximo del contenido para que no se estire demasiado en pantallas muy grandes */
+    margin: 0 auto; /* Centra horizontalmente el contenido principal en la página (auto en left y right) */
+    width: 100%; /* Ocupa todo el ancho disponible hasta llegar al max-width */
+} /* Fin del estilo del contenido principal */
+
+
+/* ==================== SECCIONES ==================== */
+
+.seccion { /* Selector de clase compartido por todas las secciones (<section>) */
+    margin-bottom: 2rem; /* Agrega espacio de 2rem debajo de cada sección para separarlas visualmente */
+    scroll-margin-top: 5rem; /* Compensa el espacio de la barra sticky al hacer scroll con enlaces internos (evita que tape el título) */
+} /* Fin del estilo de las secciones */
+
+.seccion h2 { /* Selector para los subtítulos h2 dentro de cada sección */
+    font-size: var(--paso-1); /* Usa el tamaño de fuente fluido definido con clamp() para subtítulos */
+    color: var(--color-principal); /* Aplica el color azul definido en la variable a los subtítulos */
+    border-bottom: 2px solid var(--color-principal); /* Agrega una línea azul debajo del subtítulo como separador visual */
+    padding-bottom: 0.5rem; /* Espacio entre el texto del subtítulo y la línea inferior */
+} /* Fin del estilo de los h2 de sección */
+
+
+/* ==================== TARJETAS DE SERVICIOS CON FLEXBOX ==================== */
+
+.grid-servicios { /* Selector de clase para el contenedor de las tarjetas de servicios */
+    display: flex; /* Activa Flexbox para organizar las tarjetas (requisito: Flexbox para agrupar elementos lineales) */
+    flex-direction: column; /* En móvil (mobile-first), las tarjetas se apilan verticalmente en una sola columna */
+    gap: 1.5rem; /* Espacio de 1.5rem entre cada tarjeta */
+} /* Fin del estilo del contenedor de tarjetas */
+
+.tarjeta-servicio { /* Selector de clase para cada tarjeta individual (<article>) */
+    background: white; /* Fondo blanco para cada tarjeta, contrasta con el fondo gris de la página */
+    padding: var(--espacio); /* Espacio interno alrededor del contenido de la tarjeta usando la variable */
+    border-radius: 8px; /* Esquinas redondeadas de 8px para apariencia moderna */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave: 0 horizontal, 4px vertical, 6px difuminado, negro al 10% de opacidad */
+    text-align: center; /* Centra el texto y las imágenes dentro de la tarjeta */
+    transition: transform 0.2s ease; /* Animación suave de 0.2 segundos cuando la tarjeta se transforma (al hacer hover) */
+} /* Fin del estilo de la tarjeta */
+
+.tarjeta-servicio:hover { /* Selector para cuando el cursor pasa sobre una tarjeta */
+    transform: translateY(-4px); /* Mueve la tarjeta 4px hacia arriba para efecto de "elevación" al pasar el cursor */
+} /* Fin del efecto hover de la tarjeta */
+
+.tarjeta-servicio img { /* Selector para las imágenes dentro de las tarjetas */
+    width: 60px; /* Ancho fijo de 60px para los íconos */
+    height: 60px; /* Alto fijo de 60px para que los íconos sean cuadrados y uniformes */
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortarla ni deformarla */
+    margin-bottom: 0.5rem; /* Espacio debajo del ícono antes del título */
+} /* Fin del estilo de las imágenes de tarjeta */
+
+.tarjeta-servicio h3 { /* Selector para los títulos h3 dentro de las tarjetas */
+    font-size: var(--paso-1); /* Usa el tamaño de fuente fluido definido con clamp() */
+    color: var(--color-texto); /* Aplica el color de texto oscuro definido en la variable */
+    margin: 0.5rem 0; /* Margen de 0.5rem arriba y abajo del título */
+} /* Fin del estilo de los h3 de tarjeta */
+
+.tarjeta-servicio p { /* Selector para los párrafos descriptivos dentro de las tarjetas */
+    font-size: var(--paso-0); /* Usa el tamaño de fuente fluido para texto normal */
+    color: #475569; /* Color gris medio para el texto descriptivo (buen contraste con fondo blanco) */
+    line-height: 1.5; /* Altura de línea de 1.5 veces el tamaño de fuente para mejor legibilidad */
+} /* Fin del estilo de los párrafos de tarjeta */
+
+.tarjeta-servicio a { /* Selector para los enlaces dentro de las tarjetas */
+    display: inline-block; /* Hace que el enlace se comporte como bloque en línea para poder aplicar padding */
+    margin-top: 0.5rem; /* Espacio arriba del enlace para separarlo del párrafo */
+    color: var(--color-principal); /* Color azul definido en la variable para el texto del enlace */
+    font-weight: bold; /* Texto en negritas para destacar el enlace */
+    text-decoration: none; /* Elimina el subrayado predeterminado */
+    padding: 0.5rem 1rem; /* Espacio interno para crear un área de clic más grande (accesibilidad) */
+    border: 2px solid var(--color-principal); /* Borde azul de 2px alrededor del enlace estilo botón */
+    border-radius: 4px; /* Esquinas ligeramente redondeadas */
+} /* Fin del estilo de los enlaces de tarjeta */
+
+.tarjeta-servicio a:hover { /* Selector para el estado hover del enlace dentro de la tarjeta */
+    background-color: var(--color-principal); /* Rellena el fondo de azul al pasar el cursor */
+    color: white; /* Cambia el texto a blanco para mantener contraste sobre fondo azul */
+} /* Fin del hover del enlace de tarjeta */
+
+
+/* ==================== PIE DE PÁGINA ==================== */
+
+.pie-sitio { /* Selector de clase para el elemento <footer> */
+    grid-area: pie; /* Asigna esta área al nombre "pie" definido en grid-template-areas del body */
+    text-align: center; /* Centra el texto del pie de página */
+    padding: var(--espacio); /* Espacio interno usando la variable */
+    background-color: #1e293b; /* Fondo azul muy oscuro para el pie de página */
+    color: white; /* Texto blanco para contrastar con el fondo oscuro (accesibilidad) */
+} /* Fin del estilo del pie de página */
+
+
+/* ==================== MEDIA QUERY: TABLET (768px) ==================== */
+
+@media (min-width: 768px) { /* Reglas que se aplican SOLO cuando la pantalla mide 768px o más (tablet y escritorio) */
+    .grid-servicios { /* Selecciona el contenedor de tarjetas para modificar su diseño en tablet */
+        flex-direction: row; /* Cambia la dirección de columna a fila: las tarjetas se ponen lado a lado */
+        flex-wrap: wrap; /* Permite que las tarjetas bajen a la siguiente fila si no caben */
+    } /* Fin del cambio de grid-servicios en tablet */
+    .tarjeta-servicio { /* Selecciona cada tarjeta para ajustar su ancho en tablet */
+        flex: 1 1 calc(50% - 1.5rem); /* Cada tarjeta ocupa el 50% del ancho menos el gap: resultado = 2 columnas en tablet */
+    } /* Fin del ajuste de tarjeta en tablet */
+} /* Fin de la media query de tablet */
+
+
+/* ==================== MEDIA QUERY: ESCRITORIO (1024px) ==================== */
+
+@media (min-width: 1024px) { /* Reglas que se aplican SOLO cuando la pantalla mide 1024px o más (escritorio) */
+    .tarjeta-servicio { /* Selecciona cada tarjeta para ajustar su ancho en escritorio */
+        flex: 1 1 calc(33.33% - 1.5rem); /* Cada tarjeta ocupa el 33.33% del ancho menos el gap: resultado = 3 columnas en escritorio */
+    } /* Fin del ajuste de tarjeta en escritorio */
+} /* Fin de la media query de escritorio */
+
+
+/* ==================== MODO OSCURO (ACCESIBILIDAD) ==================== */
+
+@media (prefers-color-scheme: dark) { /* Reglas que se aplican automáticamente si el usuario tiene activado el modo oscuro en su sistema operativo */
+    body { /* Selecciona el body para cambiar los colores generales en modo oscuro */
+        background-color: #0f172a; /* Fondo azul muy oscuro en lugar del gris claro */
+        color: #f1f5f9; /* Texto gris muy claro en lugar del oscuro para mantener contraste */
+    } /* Fin del body en modo oscuro */
+    .navegacion-sitio { /* Selecciona la barra de navegación en modo oscuro */
+        background-color: #1e293b; /* Fondo azul oscuro para la barra de navegación */
+    } /* Fin de la navegación en modo oscuro */
+    .tarjeta-servicio { /* Selecciona las tarjetas en modo oscuro */
+        background: #1e293b; /* Fondo azul oscuro para las tarjetas */
+        color: #f1f5f9; /* Texto claro para las tarjetas */
+    } /* Fin de las tarjetas en modo oscuro */
+    .tarjeta-servicio p { /* Selecciona los párrafos dentro de las tarjetas en modo oscuro */
+        color: #94a3b8; /* Color gris medio-claro para la descripción, mantiene contraste sobre fondo oscuro */
+    } /* Fin de los párrafos de tarjeta en modo oscuro */
+} /* Fin de la media query de modo oscuro */
