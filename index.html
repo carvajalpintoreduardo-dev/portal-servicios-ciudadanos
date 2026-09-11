@@ -1,1 +1,89 @@
+<!DOCTYPE html> <!-- Declara que este documento usa HTML5, la versión más reciente del lenguaje -->
+<html lang="es"> <!-- Etiqueta raíz que envuelve todo el documento. lang="es" indica que el idioma es español (ayuda a lectores de pantalla y buscadores) -->
+<head> <!-- Contenedor de metadatos: información que NO se ve en la página pero es esencial para el navegador -->
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres para que se muestren correctamente acentos, ñ y símbolos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace la página responsiva: el ancho se adapta al dispositivo y el zoom inicial es 100% -->
+    <title>Portal de Servicios Ciudadanos</title> <!-- Texto que aparece en la pestaña del navegador y en los resultados de búsqueda -->
+    <link rel="stylesheet" href="assets/css/style.css"> <!-- Vincula el archivo CSS externo para aplicar todos los estilos visuales a esta página -->
+</head> <!-- Fin de la sección de metadatos -->
 
+<body> <!-- Contenedor de TODO el contenido visible de la página web -->
+
+    <header class="encabezado-sitio"> <!-- Etiqueta semántica para el encabezado principal del sitio. La clase permite estilizarlo desde CSS -->
+        <h1>Portal de Servicios Ciudadanos</h1> <!-- Título principal de la página. Solo debe haber UN h1 por página (importante para SEO) -->
+        <p class="subtitulo">Accede fácilmente a los servicios locales</p> <!-- Párrafo descriptivo debajo del título. La clase "subtitulo" permite darle estilo propio -->
+    </header> <!-- Fin del encabezado -->
+
+    <nav class="navegacion-sitio" aria-label="Navegación principal"> <!-- Etiqueta semántica para el menú de navegación. aria-label describe su propósito para lectores de pantalla (accesibilidad) -->
+        <a href="#inicio">Inicio</a> <!-- Enlace interno que al hacer clic desplaza la página hasta la sección con id="inicio". Texto descriptivo (no dice "clic aquí") -->
+        <a href="#servicios">Servicios</a> <!-- Enlace interno que lleva a la sección de servicios -->
+        <a href="#requisitos">Requisitos</a> <!-- Enlace interno que lleva a la sección de requisitos -->
+        <a href="#ubicacion">Ubicación</a> <!-- Enlace interno que lleva a la sección de ubicación -->
+        <a href="#contacto">Contacto</a> <!-- Enlace interno que lleva a la sección de contacto -->
+    </nav> <!-- Fin de la barra de navegación -->
+
+    <main class="contenido-principal"> <!-- Etiqueta semántica que envuelve el contenido principal y único de la página (solo debe haber un main) -->
+
+        <section id="inicio" class="seccion"> <!-- Sección temática "Inicio". El id="inicio" es el destino del enlace del menú. La clase "seccion" aplica estilos compartidos -->
+            <h2>Inicio</h2> <!-- Subtítulo de la sección (jerarquía menor que h1) -->
+            <p>Bienvenido al portal oficial de trámites y servicios para los ciudadanos.</p> <!-- Párrafo con texto descriptivo de bienvenida -->
+        </section> <!-- Fin de la sección Inicio -->
+
+        <section id="servicios" class="seccion"> <!-- Sección temática "Servicios" donde se mostrarán las tarjetas informativas -->
+            <h2>Servicios</h2> <!-- Subtítulo de la sección de servicios -->
+            <div class="grid-servicios"> <!-- Contenedor div que usaremos con CSS Grid/Flexbox para organizar las tarjetas en columnas responsivas -->
+
+                <article class="tarjeta-servicio"> <!-- Etiqueta semántica para contenido independiente (una tarjeta). La clase permite estilizar cada tarjeta igual -->
+                    <img src="assets/img/licencias.png" alt="Ícono representativo de licencias de conducir"> <!-- Imagen del ícono. src=ruta del archivo. alt=texto alternativo para accesibilidad (lectores de pantalla y si la imagen no carga) -->
+                    <h3>Licencias y permisos</h3> <!-- Título de la tarjeta (jerarquía menor que h2) -->
+                    <p>Trámite de licencias de conducir y permisos temporales.</p> <!-- Descripción breve del servicio -->
+                    <a href="#contacto">Ver requisitos de licencias</a> <!-- Enlace con texto descriptivo (accesible) que lleva a la sección de contacto -->
+                </article> <!-- Fin de la tarjeta de licencias -->
+
+                <article class="tarjeta-servicio"> <!-- Segunda tarjeta de servicio -->
+                    <img src="assets/img/agua.png" alt="Ícono representativo del servicio de agua potable"> <!-- Imagen del ícono de agua con texto alternativo descriptivo -->
+                    <h3>Agua y saneamiento</h3> <!-- Título de la tarjeta de agua -->
+                    <p>Consulta tus recibos y reporta fallas en el servicio.</p> <!-- Descripción breve del servicio de agua -->
+                    <a href="#contacto">Reportar falla de agua</a> <!-- Enlace descriptivo que lleva a la sección de contacto -->
+                </article> <!-- Fin de la tarjeta de agua -->
+
+                <article class="tarjeta-servicio"> <!-- Tercera tarjeta de servicio -->
+                    <img src="assets/img/transporte.png" alt="Ícono representativo del servicio de transporte público"> <!-- Imagen del ícono de transporte con texto alternativo -->
+                    <h3>Transporte público</h3> <!-- Título de la tarjeta de transporte -->
+                    <p>Consulta rutas, horarios y tarjetas de transporte.</p> <!-- Descripción breve del servicio de transporte -->
+                    <a href="#contacto">Consultar rutas de transporte</a> <!-- Enlace descriptivo que lleva a la sección de contacto -->
+                </article> <!-- Fin de la tarjeta de transporte -->
+
+                <article class="tarjeta-servicio"> <!-- Cuarta tarjeta de servicio -->
+                    <img src="assets/img/reciclaje.png" alt="Ícono representativo del programa de reciclaje"> <!-- Imagen del ícono de reciclaje con texto alternativo -->
+                    <h3>Reciclaje</h3> <!-- Título de la tarjeta de reciclaje -->
+                    <p>Conoce los centros de acopio y horarios de recolección.</p> <!-- Descripción breve del servicio de reciclaje -->
+                    <a href="#contacto">Ver centros de acopio</a> <!-- Enlace descriptivo que lleva a la sección de contacto -->
+                </article> <!-- Fin de la tarjeta de reciclaje -->
+
+            </div> <!-- Fin del contenedor de tarjetas -->
+        </section> <!-- Fin de la sección Servicios -->
+
+        <section id="requisitos" class="seccion"> <!-- Sección temática "Requisitos" -->
+            <h2>Requisitos</h2> <!-- Subtítulo de la sección -->
+            <p>Para realizar cualquier trámite es necesario presentar identificación oficial vigente y comprobante de domicilio reciente.</p> <!-- Texto descriptivo con los requisitos generales -->
+        </section> <!-- Fin de la sección Requisitos -->
+
+        <section id="ubicacion" class="seccion"> <!-- Sección temática "Ubicación" -->
+            <h2>Ubicación de oficinas</h2> <!-- Subtítulo de la sección -->
+            <p>Nuestras oficinas principales se ubican en Av. Ciudadanía #123, Col. Centro, Ciudad de México.</p> <!-- Texto descriptivo con la dirección -->
+        </section> <!-- Fin de la sección Ubicación -->
+
+        <section id="contacto" class="seccion"> <!-- Sección temática "Contacto o Citas" -->
+            <h2>Contacto o Citas</h2> <!-- Subtítulo de la sección -->
+            <p>Agenda tu cita llamando al 55-1234-5678 o enviando un correo a citas@servicios.gob.</p> <!-- Texto descriptivo con datos de contacto -->
+        </section> <!-- Fin de la sección Contacto -->
+
+    </main> <!-- Fin del contenido principal -->
+
+    <footer class="pie-sitio"> <!-- Etiqueta semántica para el pie de página. Contiene información legal y de copyright -->
+        <p>&copy; 2026 Portal de Servicios Ciudadanos. Escuela Pública de Código.</p> <!-- &copy; es el código HTML que muestra el símbolo © de copyright -->
+    </footer> <!-- Fin del pie de página -->
+
+</body> <!-- Fin del cuerpo visible de la página -->
+</html> <!-- Fin del documento HTML -->
